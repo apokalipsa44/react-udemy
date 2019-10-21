@@ -1,37 +1,28 @@
-// Nowy komponent wyświetlenie cyfr
-// losowanie liczby 
-// Wyświetlenie nazwy przycisku z obiektu props, ze zmiennej bezpośrednio lub z obiektu state.
-
-
 class App extends React.Component {
+    state = {
+        textToRender: ''
+    }
 
-  state = {
-    text: "",
-    btn: 'zesraj się'
-  }
+    handleClick() {
+        this.setState({
+            textToRender: this.state.textToRender + 'a'
+        })
 
-  handleClick = () => {
-    const number = Math.floor(Math.random() * 10)
-    this.setState({
-      text: this.state.text + number
-    })
-  }
+    }
 
-  render() {
-    const btnName = "stwórz liczbę"
-    return (
-      <React.Fragment>
-        <button onClick={this.handleClick}>{this.state.btn}</button>
-        <PanelResult text={this.state.text} />
-      </React.Fragment>
-    )
-  }
+    render() {
+        return (
+            <React.Fragment>
+                <button onClick={this.handleClick.bind(this)}>Dodaj literkem</button>
+                <PanelResult text={this.state.textToRender} />
+            </React.Fragment>
+        );
+    }
 }
 
 const PanelResult = (props) => {
-  return (
+return(
     <h1>{props.text}</h1>
-  )
+)
 }
-
-ReactDOM.render(<App btnTitle="dodaj cyfrę" />, document.getElementById("root"))
+ReactDOM.render(<App />, document.getElementById('root'))
