@@ -16,16 +16,28 @@ class App extends React.Component {
         })
     }
 
+    handleBuy = () => {
+        this.setState({
+            availableProducts: this.state.availableProducts - this.state.ordered,
+            ordered: 0
+        })
+    }
+
     render() {
+        const {ordered, availableProducts}=this.state
         return (
+
             <>
                 {/*//jak dojdzie do zera to disabld =true, w przecinyym razie false*/}
-                <button disabled={this.state.ordered === 0 ? true : false} onClick={this.handleRemoveFromCart}>-
+                <button disabled={ordered === 0 ? true : false} onClick={this.handleRemoveFromCart}>-
                 </button>
-                <span> {this.state.ordered} </span>
-                <button disabled={this.state.ordered === this.state.availableProducts ? true : false}
+                <span style={ordered === 0 ? {opacity: 0.3} : {opacity: 1}}> {ordered} </span>
+                <button disabled={ordered === availableProducts ? true : false}
                         onClick={this.handleAddToCart}>+
                 </button>
+                {ordered > 0 ? <button onClick={this.handleBuy}>kup mje</button> : false}
+                <br></br>
+                Available products: {availableProducts}
             </>
         );
     }
