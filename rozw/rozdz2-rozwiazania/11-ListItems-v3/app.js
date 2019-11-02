@@ -4,21 +4,25 @@ const data = {
       id: 1,
       age: 29,
       name: "Arek",
+      sex: "male"
     },
     {
       id: 2,
       age: 49,
       name: "Marta",
+      sex:"female"
     },
     {
       id: 3,
       age: 19,
       name: "Stasia",
+      sex: "female"
     },
     {
       id: 4,
       age: 24,
       name: "Karol",
+      sex: "male"
     }
   ]
 }
@@ -27,6 +31,7 @@ const Item = ({ user }) => (
   <div>
     <h1>Użytkownik {user.name}</h1>
     <h2>Ma {user.age}</h2>
+    <h2>Płeć użytkownika {user.sex}</h2>
   </div>
 )
 class ListItems extends React.Component {
