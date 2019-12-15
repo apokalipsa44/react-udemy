@@ -1,36 +1,29 @@
 import React, {Component} from 'react';
 import './App.css';
-import SwitchButton from "./SwitchButton";
-
+import Line from './components/Line';
 
 class App extends Component {
     state = {
-        time: 0,
-        active: false
-    }
-    addSecond = () => {
-        this.setState({
-            time: this.state.time + 1
-        })
+        words: []
     }
 
-    handleClick = () => {
-        if (this.state.active) {
-            clearInterval(this.idInterval)
-        } else {
-            this.idInterval = setInterval(() =>
-                this.addSecond(), 1000)
-        }
-        this.setState({
-            active: !this.state.active
-        })
-    }
+ componentDidMount(): void {
+        fetch('data/words.json')
+            .then(response=>response.json())
+            .then(response=> {
+                this.setState({
+                    words:response.words
+                })
+            })
+ }
 
-    render(){
+    render() {
+        const words = this.state.words.map(word => (
+            <Line eng={word.en} pol={word.pl}/>
+        ))
+
         return (<>
-                <p>{this.state.time}</p>
-                <SwitchButton click={this.handleClick} active={this.state.active}/>
-
+                {words}
             </>
 
 
