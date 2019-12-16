@@ -1,7 +1,7 @@
 import React from "react";
 
 const AddUserBtn =(props)=>(
-    <button>
+    <button onClick={props.click}>
         add user
     </button>
 )

@@ -7,21 +7,29 @@ class App extends Component {
         users: []
     }
 
-    componentDidMount() {
+    handleAddUser = () => {
+        console.log("click")
+        const api = "https://randomuser.me/api/?results=1"
+        fetch(api)
+            .then(response => response.json())
+            .then(results => {
+                const user = results.results
+                this.setState(prevState => ({
+                    users: prevState.users.concat(user)
+                }))
 
+            })
+            .catch("Error sie zrobił")
 
     }
 
     render() {
-        const usersMap = this.state.users.map(user => (
-           null
-            )
-        )
 
         return (
             <>
-               <AddUserBtn/>
-               <UserLine/>
+                <AddUserBtn click={this.handleAddUser}/>
+                <UserLine users={this.state.users}/>
+
             </>
         )
     }
