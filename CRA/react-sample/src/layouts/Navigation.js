@@ -14,7 +14,7 @@ const Navigation = () => {
 
     const menu = menuList.map(menu => (
         <li key={menu.name}>
-            <NavLink to={menu.path} exact="true">{menu.name}</NavLink>
+            <NavLink to={menu.path} exact>{menu.name}</NavLink>
         </li>
     ))
 

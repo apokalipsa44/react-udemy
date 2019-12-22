@@ -10,16 +10,16 @@ const Header = () => {
     return (
 
         <Switch>
-                <Route path="/" exact="true" render={() => (
+                <Route path="/" exact render={() => (
                     <img src={bmw1} alt="bmw"/>
                 )}/>
-                <Route path="/products" exact="true" render={() => (
+                <Route path="/products" exact render={() => (
                     <img src={bmw2} alt="bmw"/>
                 )}/>
-                <Route path="/contact" exact="true" render={() => (
+                <Route path="/contact" exact render={() => (
                     <img src={bmw3} alt="bmw"/>
                 )}/>
-                <Route path="/admin" exact="true" render={() => (
+                <Route path="/admin" exact render={() => (
                     <img src={bmw4} alt="bmw"/>
                 )}/>
                 <Route render={()=>(

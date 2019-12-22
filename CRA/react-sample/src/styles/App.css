@@ -29,3 +29,6 @@ footer {
     background-color: black;
     text-align: center;
 }
+section.page{
+    width: 100%;
+}
