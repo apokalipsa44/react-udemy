@@ -1,23 +1,27 @@
-import React from 'react';
-import './App.css';
-import Board from "./Board";
-import Element from "./Element";
+import React, {Component} from 'react';
+import initialData from "./initialData";
+import Column from "./column";
+import {DragDropContext} from "react-beautiful-dnd";
 
-function App() {
-    return (
-        <div className="App">
-            <main className="flexbox">
-                <Board id="board1" className="board">
+class App extends Component {
+    state = initialData
 
-                </Board>
-                <Board id="board2" className="board">
-                    <Element id="task1" className="element" draggable="true"><p>ssij</p></Element>
-                    <Element id="task2" className="element" draggable="true"><p>nie ssij</p></Element>
-                </Board>
-            </main>
-        </div>
+    onDragEnd = result => {
 
-    );
+    }
+
+    render() {
+        return (
+            <DragDropContext onDragEnd={this.onDragEnd}>
+                {this.state.columnOrder.map(columnId => {
+                    const column = this.state.columns[columnId]
+                    const tasks = column.tasksIDs.map(taskId => this.state.tasks[taskId])
+
+                    return <Column key={String(column.id)} column={column} tasks={tasks}/>
+                })}
+            </DragDropContext>
+        )
+    }
 }
 
 export default App;
