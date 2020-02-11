@@ -14,9 +14,9 @@ class Task extends Component {
     render() {
         console.log(this.props)
         return (
-            <Draggable draggableId={this.props.task.id} index={this.props.index} isDragDisabled={false}>
+            <Draggable draggableId={this.props.task.id} index={this.props.index}>
                 {(provided)=>(
-                    <Container {...provided.draggableProps}
+                    <Container  {...provided.draggableProps}
                                {...provided.dragHandleProps}
                                ref={provided.innerRef}>
                         {this.props.task.content}
